@@ -11,7 +11,8 @@ window.title("Stoichiometry Helper")
 window.geometry("%dx%d" % (window.winfo_screenwidth(), window.winfo_screenheight()))
 
 
-# functions
+# ---- FUNCTIONS ----
+
 def done():
 
     a = str(get_chemical1.get())
@@ -55,7 +56,8 @@ def description():
     d.insert(tk.END, a.description)
 
 
-# labels
+# ---- LABELS ----
+
 chemical = tk.Label(text="Reactants and Products:", font=("Courier New", 10, 'bold'))
 chemical.grid(row=0, column=0, pady=(30, 30))
 MR = tk.Label(text="Molar Ratio (MR):", font=("Courier New", 10, 'bold'))
@@ -84,7 +86,7 @@ colon3.grid(row=1, column=6)
 newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
 newMm.grid(row=7, column=0)
 
-# entry fields
+# ---- ENTRY FIELDS ----
 
 get_chemical1 = tk.Entry()
 get_chemical1.grid(row=0, column=1)
@@ -142,7 +144,7 @@ getMm4.grid(row=4, column=7, padx=(0, 20))
 getelement = tk.Entry(width=60)
 getelement.grid(row=4, column=9, padx=(150, 50))
 
-# buttons
+# ---- BUTTONS ----
 
 submit = tk.Button(text="Submit", command=done, height=1, width=7, bg="#c8c8c8").grid(row=5, column=7, pady=(0, 20))
 
