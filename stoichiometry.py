@@ -2,7 +2,7 @@ from molmass import Formula, ELEMENTS
 import tkinter as tk
 import tkinter.ttk
 
-# TODO: convert to *.exe file
+# TODO: convert to .exe file
 
 window = tk.Tk()
 window.title("Stoichiometry Helper")
