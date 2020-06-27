@@ -3,11 +3,13 @@ import tkinter as tk
 import tkinter.ttk
 
 # TODO: convert to *.exe file
+# TODO: perform calculations for m and n
 
 window = tk.Tk()
 window.title("Stoichiometry Helper")
 
 window.geometry("%dx%d" % (window.winfo_screenwidth(), window.winfo_screenheight()))
+
 
 # functions
 def done():
@@ -52,33 +54,34 @@ def description():
     d.grid(row=6, column=9, padx=(60, 0), pady=(20, 20))
     d.insert(tk.END, a.description)
 
+
 # labels
-chemical = tk.Label(text="Reactants and Products:", font=("Segoe UI", 10, 'bold'))
+chemical = tk.Label(text="Reactants and Products:", font=("Courier New", 10, 'bold'))
 chemical.grid(row=0, column=0, pady=(30, 30))
-MR = tk.Label(text="Molar Ratio (MR):", font=("Segoe UI", 10, 'bold'))
+MR = tk.Label(text="Molar Ratio (MR):", font=("Courier New", 10, 'bold'))
 MR.grid(row=1, column=0, pady=(30, 30))
-m = tk.Label(text="Mass (g):", font=("Segoe UI", 10, 'bold'))
+m = tk.Label(text="Mass (g):", font=("Courier New", 10, 'bold'))
 m.grid(row=2, column=0, pady=(30, 30))
-n = tk.Label(text="Moles (mol):", font=("Segoe UI", 10, 'bold'))
+n = tk.Label(text="Moles (mol):", font=("Courier New", 10, 'bold'))
 n.grid(row=3, column=0, pady=(30, 30))
-Mm = tk.Label(text="Molar Mass (g/mol)", font=("Segoe UI", 10, 'bold'))
+Mm = tk.Label(text="Molar Mass (g/mol)", font=("Courier New", 10, 'bold'))
 Mm.grid(row=4, column=0, pady=(30, 30))
 
-plus1 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
+plus1 = tk.Label(text="+", font=("Courier New", 10, 'bold'))
 plus1.grid(row=0, column=2)
-plus2 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
+plus2 = tk.Label(text="+", font=("Courier New", 10, 'bold'))
 plus2.grid(row=0, column=6)
-equals = tk.Label(text="---->", font=("Segoe UI", 10, 'bold'))
+equals = tk.Label(text="---->", font=("Courier New", 10, 'bold'))
 equals.grid(row=0, column=4)
 
-colon1 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
+colon1 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
 colon1.grid(row=1, column=2)
-colon2 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
+colon2 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
 colon2.grid(row=1, column=4)
-colon3 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
+colon3 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
 colon3.grid(row=1, column=6)
 
-newMm = tk.Label(text="Molar Mass (g/mol):", font=("Segoe UI", 10))
+newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
 newMm.grid(row=7, column=0)
 
 # entry fields
@@ -141,10 +144,11 @@ getelement.grid(row=4, column=9, padx=(150, 50))
 
 # buttons
 
-submit = tk.Button(text="Submit", command=done, height=1, width=7, bg="#c8c8c8").grid(row=5, column=7)
+submit = tk.Button(text="Submit", command=done, height=1, width=7, bg="#c8c8c8").grid(row=5, column=7, pady=(0, 20))
 
 tkinter.ttk.Separator(window, orient='vertical').grid(column=8, row=0, rowspan=10, sticky='ns')
 
-desc = tk.Button(text="Get description", command=description, bg="#c8c8c8").grid(row=5, column=9, padx=(150, 50))
+desc = tk.Button(text="^^^ Get description of the element entered above ^^^", command=description, bg="#c8c8c8")\
+    .grid(row=5, column=9, padx=(150, 50))
 
 window.mainloop()
