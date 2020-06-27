@@ -11,6 +11,7 @@ In the top right corner are the input fields. One must input the unbalanced chem
 In the bottom right, you can input the symbol of an element and press "get description" to get the history and various facts abou the provided element.
 
 stoichiometry.py: main program
+
 chem_sample_output.jpg: sample output
 
 For optimal experience, use in full screen mode.
