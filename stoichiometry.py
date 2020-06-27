@@ -20,6 +20,9 @@ def done():
     c = str(get_chemical3.get())
     d = str(get_chemical4.get())
 
+    newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
+    newMm.grid(row=7, column=0)
+
     c1 = tk.Text(master=window, height=1, width=15)
     c1.grid(row=7, column=1)
     c1.insert(tk.END, Formula(a).mass)
@@ -46,6 +49,22 @@ def done():
     p4.grid(row=3, column=9, padx=(90, 0))
     p4.insert(tk.END, str(Formula(d).composition()))
 
+    data = [[getMR1.get(), getm1.get(), getn1.get(), Formula(a).mass],
+            [getMR2.get(), getm2.get(), getn2.get(), Formula(b).mass],
+            [getMR3.get(), getm3.get(), getn3.get(), Formula(c).mass],
+            [getMR4.get(), getm4.get(), getn4.get(), Formula(d).mass]]
+
+    for i in data:
+        if i[1] == i[2] == 0.0:
+            pass
+        else:
+            if i[1] != 0.0:
+                i[2] = float(i[1]) / float(i[3])
+            else:
+                i[1] = float(i[2]) * float(i[3])
+
+    
+
 
 def description():
 
@@ -58,9 +77,9 @@ def description():
 
 # ---- LABELS ----
 
-chemical = tk.Label(text="Reactants and Products:", font=("Courier New", 10, 'bold'))
+chemical = tk.Label(text="Unbalanced Chemical Equation:", font=("Courier New", 10, 'bold'))
 chemical.grid(row=0, column=0, pady=(30, 30))
-MR = tk.Label(text="Molar Ratio (MR):", font=("Courier New", 10, 'bold'))
+MR = tk.Label(text="Molar Ratio/Coefficients (MR):", font=("Courier New", 10, 'bold'))
 MR.grid(row=1, column=0, pady=(30, 30))
 m = tk.Label(text="Mass (g):", font=("Courier New", 10, 'bold'))
 m.grid(row=2, column=0, pady=(30, 30))
@@ -83,9 +102,6 @@ colon2.grid(row=1, column=4)
 colon3 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
 colon3.grid(row=1, column=6)
 
-newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
-newMm.grid(row=7, column=0)
-
 # ---- ENTRY FIELDS ----
 
 get_chemical1 = tk.Entry()
@@ -97,10 +113,14 @@ get_chemical3.grid(row=0, column=5)
 get_chemical4 = tk.Entry()
 get_chemical4.grid(row=0, column=7, padx=(0, 20))
 
-getMR1 = tk.Entry().grid(row=1, column=1)
-getMR2 = tk.Entry().grid(row=1, column=3)
-getMR3 = tk.Entry().grid(row=1, column=5)
-getMR4 = tk.Entry().grid(row=1, column=7, padx=(0, 20))
+getMR1 = tk.Entry()
+getMR1.grid(row=1, column=1)
+getMR2 = tk.Entry()
+getMR2.grid(row=1, column=3)
+getMR3 = tk.Entry()
+getMR3.grid(row=1, column=5)
+getMR4 = tk.Entry()
+getMR4.grid(row=1, column=7, padx=(0, 20))
 
 getm1 = tk.Entry()
 getm1.insert(0, 0.0)
