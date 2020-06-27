@@ -19,7 +19,7 @@ def done():
     c = str(get_chemical3.get())
     d = str(get_chemical4.get())
 
-    newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
+    newMm = tk.Label(text="Molar Mass (g/mol):", font=("Segoe UI", 10))
     newMm.grid(row=9, column=0)
 
     c1 = tk.Text(master=window, height=1, width=15)
@@ -74,10 +74,10 @@ def done():
             for r in data:
                 r[1] = float(r[2]) * float(r[3])
 
-            finished_mass_label = tk.Label(text="Moles (mol): ", font=("Courier New", 10))
+            finished_mass_label = tk.Label(text="Moles (mol): ", font=("Segoe UI", 10))
             finished_mass_label.grid(row=8, column=0)
 
-            finished_moles_label = tk.Label(text="Mass (g)", font=("Courier New", 10))
+            finished_moles_label = tk.Label(text="Mass (g)", font=("Segoe UI", 10))
             finished_moles_label.grid(row=7, column=0)
 
             thing1 = tk.Text(master=window, height=1, width=15)
@@ -118,29 +118,29 @@ def description():
 
 # ---- LABELS ----
 
-chemical = tk.Label(text="Unbalanced Chemical Equation:", font=("Courier New", 10, 'bold'))
+chemical = tk.Label(text="Unbalanced Chemical Equation:", font=("Segoe UI", 10, 'bold'))
 chemical.grid(row=0, column=0, pady=(30, 30))
-MR = tk.Label(text="Molar Ratio/Coefficients (MR):", font=("Courier New", 10, 'bold'))
+MR = tk.Label(text="Molar Ratio/Coefficients (MR):", font=("Segoe UI", 10, 'bold'))
 MR.grid(row=1, column=0, pady=(30, 30))
-m = tk.Label(text="Mass (g):", font=("Courier New", 10, 'bold'))
+m = tk.Label(text="Mass (g):", font=("Segoe UI", 10, 'bold'))
 m.grid(row=2, column=0, pady=(30, 30))
-n = tk.Label(text="Moles (mol):", font=("Courier New", 10, 'bold'))
+n = tk.Label(text="Moles (mol):", font=("Segoe UI", 10, 'bold'))
 n.grid(row=3, column=0, pady=(30, 30))
-Mm = tk.Label(text="Molar Mass (g/mol)", font=("Courier New", 10, 'bold'))
+Mm = tk.Label(text="Molar Mass (g/mol)", font=("Segoe UI", 10, 'bold'))
 Mm.grid(row=4, column=0, pady=(30, 30))
 
-plus1 = tk.Label(text="+", font=("Courier New", 10, 'bold'))
+plus1 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
 plus1.grid(row=0, column=2)
-plus2 = tk.Label(text="+", font=("Courier New", 10, 'bold'))
+plus2 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
 plus2.grid(row=0, column=6)
-equals = tk.Label(text="---->", font=("Courier New", 10, 'bold'))
+equals = tk.Label(text="---->", font=("Segoe UI", 10, 'bold'))
 equals.grid(row=0, column=4)
 
-colon1 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
+colon1 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
 colon1.grid(row=1, column=2)
-colon2 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
+colon2 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
 colon2.grid(row=1, column=4)
-colon3 = tk.Label(text=":", font=("Courier New", 10, 'bold'))
+colon3 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
 colon3.grid(row=1, column=6)
 
 # ---- ENTRY FIELDS ----
