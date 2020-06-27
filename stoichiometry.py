@@ -20,7 +20,7 @@ def done():
     d = str(get_chemical4.get())
 
     newMm = tk.Label(text="Molar Mass (g/mol):", font=("Courier New", 10))
-    newMm.grid(row=7, column=0)
+    newMm.grid(row=9, column=0)
 
     c1 = tk.Text(master=window, height=1, width=15)
     c1.grid(row=7, column=1)
@@ -78,7 +78,7 @@ def done():
             finished_mass_label.grid(row=8, column=0)
 
             finished_moles_label = tk.Label(text="Mass (g)", font=("Courier New", 10))
-            finished_moles_label.grid(row=9, column=0)
+            finished_moles_label.grid(row=7, column=0)
 
             thing1 = tk.Text(master=window, height=1, width=15)
             thing1.grid(row=8, column=1)
@@ -111,7 +111,7 @@ def description():
 
     a = ELEMENTS[str(getelement.get())]
 
-    d = tk.Text(master=window, width=50, height=6)
+    d = tk.Text(master=window, width=50, height=7)
     d.grid(row=6, column=9, padx=(60, 0), pady=(20, 20))
     d.insert(tk.END, a.description)
 
