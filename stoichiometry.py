@@ -3,7 +3,6 @@ import tkinter as tk
 import tkinter.ttk
 
 # TODO: convert to *.exe file
-# TODO: perform calculations for m and n
 
 window = tk.Tk()
 window.title("Stoichiometry Helper")
@@ -63,14 +62,56 @@ def done():
             else:
                 i[1] = float(i[2]) * float(i[3])
 
-    
+    for j in data:
+        if j[1] != 0.0 and j[2] != 0.0:
+            z = j
+
+            k = float(z[2]) / float(z[0])
+
+            for q in data:
+                q[2] = float(k) * float(q[0])
+
+            for r in data:
+                r[1] = float(r[2]) * float(r[3])
+
+            finished_mass_label = tk.Label(text="Moles (mol): ", font=("Courier New", 10))
+            finished_mass_label.grid(row=8, column=0)
+
+            finished_moles_label = tk.Label(text="Mass (g)", font=("Courier New", 10))
+            finished_moles_label.grid(row=9, column=0)
+
+            thing1 = tk.Text(master=window, height=1, width=15)
+            thing1.grid(row=8, column=1)
+            thing1.insert(tk.END, data[0][2])
+            thing2 = tk.Text(master=window, height=1, width=15)
+            thing2.grid(row=8, column=3)
+            thing2.insert(tk.END, data[1][2])
+            thing3 = tk.Text(master=window, height=1, width=15)
+            thing3.grid(row=8, column=5)
+            thing3.insert(tk.END, data[2][2])
+            thing4 = tk.Text(master=window, height=1, width=15)
+            thing4.grid(row=8, column=7)
+            thing4.insert(tk.END, data[3][2])
+
+            something1 = tk.Text(master=window, height=1, width=15)
+            something1.grid(row=9, column=1)
+            something1.insert(tk.END, data[0][1])
+            something2 = tk.Text(master=window, height=1, width=15)
+            something2.grid(row=9, column=3)
+            something2.insert(tk.END, data[1][1])
+            something3 = tk.Text(master=window, height=1, width=15)
+            something3.grid(row=9, column=5)
+            something3.insert(tk.END, data[2][1])
+            something4 = tk.Text(master=window, height=1, width=15)
+            something4.grid(row=9, column=7)
+            something4.insert(tk.END, data[3][1])
 
 
 def description():
 
     a = ELEMENTS[str(getelement.get())]
 
-    d = tk.Text(master=window, width=60, height=6)
+    d = tk.Text(master=window, width=50, height=6)
     d.grid(row=6, column=9, padx=(60, 0), pady=(20, 20))
     d.insert(tk.END, a.description)
 
