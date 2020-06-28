@@ -125,8 +125,8 @@ def description():
 
 # ---- LABELS ----
 
-chemical = tk.Label(text="Unbalanced Chemical Equation:", font=("Segoe UI", 10, 'bold'))
-chemical.grid(row=0, column=0, pady=(30, 30))
+chemicals = tk.Label(text="Unbalanced Chemical Equation:", font=("Segoe UI", 10, 'bold'))
+chemicals.grid(row=0, column=0, pady=(30, 30))
 MR = tk.Label(text="Molar Ratio/Coefficients (MR):", font=("Segoe UI", 10, 'bold'))
 MR.grid(row=1, column=0, pady=(30, 30))
 m = tk.Label(text="Mass (g):", font=("Segoe UI", 10, 'bold'))
