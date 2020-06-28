@@ -2,11 +2,10 @@ from molmass import Formula, ELEMENTS
 import tkinter as tk
 import tkinter.ttk
 
-# TODO: convert to .exe file
-
 window = tk.Tk()
 window.title("Stoichiometry Helper")
 
+# makes window size default to fullscreen
 window.geometry("%dx%d" % (window.winfo_screenwidth(), window.winfo_screenheight()))
 
 
@@ -22,37 +21,40 @@ def done():
     newMm = tk.Label(text="Molar Mass (g/mol):", font=("Segoe UI", 10))
     newMm.grid(row=7, column=0)
 
-    c1 = tk.Text(master=window, height=1, width=15)
-    c1.grid(row=7, column=1)
-    c1.insert(tk.END, Formula(a).mass)
-    c2 = tk.Text(master=window, height=1, width=15)
-    c2.grid(row=7, column=3)
-    c2.insert(tk.END, Formula(b).mass)
-    c3 = tk.Text(master=window, height=1, width=15)
-    c3.grid(row=7, column=5)
-    c3.insert(tk.END, Formula(c).mass)
-    c4 = tk.Text(master=window, height=1, width=15)
-    c4.grid(row=7, column=7)
-    c4.insert(tk.END, Formula(d).mass)
+    computed_Mm_value1 = tk.Text(master=window, height=1, width=15)
+    computed_Mm_value1.grid(row=7, column=1)
+    computed_Mm_value1.insert(tk.END, Formula(a).mass)
+    computed_Mm_value2 = tk.Text(master=window, height=1, width=15)
+    computed_Mm_value2.grid(row=7, column=3)
+    computed_Mm_value2.insert(tk.END, Formula(b).mass)
+    computed_Mm_value3 = tk.Text(master=window, height=1, width=15)
+    computed_Mm_value3.grid(row=7, column=5)
+    computed_Mm_value3.insert(tk.END, Formula(c).mass)
+    computed_Mm_value4 = tk.Text(master=window, height=1, width=15)
+    computed_Mm_value4.grid(row=7, column=7)
+    computed_Mm_value4.insert(tk.END, Formula(d).mass)
 
-    p1 = tk.Text(master=window, height=5, width=42)
-    p1.grid(row=0, column=9, padx=(90, 0))
-    p1.insert(tk.END, str(Formula(a).composition()))
-    p2 = tk.Text(master=window, height=5, width=42)
-    p2.grid(row=1, column=9, padx=(90, 0))
-    p2.insert(tk.END, str(Formula(b).composition()))
-    p3 = tk.Text(master=window, height=5, width=42)
-    p3.grid(row=2, column=9, padx=(90, 0))
-    p3.insert(tk.END, str(Formula(c).composition()))
-    p4 = tk.Text(master=window, height=5, width=42)
-    p4.grid(row=3, column=9, padx=(90, 0))
-    p4.insert(tk.END, str(Formula(d).composition()))
+    percent_composition1 = tk.Text(master=window, height=5, width=42)
+    percent_composition1.grid(row=0, column=9, padx=(90, 0))
+    percent_composition1.insert(tk.END, str(Formula(a).composition()))
+    percent_composition2 = tk.Text(master=window, height=5, width=42)
+    percent_composition2.grid(row=1, column=9, padx=(90, 0))
+    percent_composition2.insert(tk.END, str(Formula(b).composition()))
+    percent_composition3 = tk.Text(master=window, height=5, width=42)
+    percent_composition3.grid(row=2, column=9, padx=(90, 0))
+    percent_composition3.insert(tk.END, str(Formula(c).composition()))
+    percent_composition4 = tk.Text(master=window, height=5, width=42)
+    percent_composition4.grid(row=3, column=9, padx=(90, 0))
+    percent_composition4.insert(tk.END, str(Formula(d).composition()))
 
     data = [[getMR1.get(), getm1.get(), getn1.get(), Formula(a).mass],
             [getMR2.get(), getm2.get(), getn2.get(), Formula(b).mass],
             [getMR3.get(), getm3.get(), getn3.get(), Formula(c).mass],
             [getMR4.get(), getm4.get(), getn4.get(), Formula(d).mass]]
 
+    # locate the sublist of data where values are filled in for mass and moles
+    # if moles are given, find mass and vice versa
+    # use equation (n = m / Mm) or (moles = mass / molar mass) or (mol = g / g/mol)
     for i in data:
         if i[1] == i[2] == 0.0:
             pass
@@ -62,15 +64,20 @@ def done():
             else:
                 i[1] = float(i[2]) * float(i[3])
 
+    # locate the lists where mass and moles have been calculated
+    # calculate the number of moles of that compound as if molar ratio is 1 (k)
+    # for instance, if n = 2.4 and MR = 2, k = 1.2
     for j in data:
         if j[1] != 0.0 and j[2] != 0.0:
             z = j
 
             k = float(z[2]) / float(z[0])
 
+            # calculate the moles of the remaining compounds
             for q in data:
                 q[2] = float(k) * float(q[0])
 
+            # calculate the mass of the remaining compounds
             for r in data:
                 r[1] = float(r[2]) * float(r[3])
 
@@ -80,36 +87,36 @@ def done():
             finished_moles_label = tk.Label(text="Mass (g)", font=("Segoe UI", 10))
             finished_moles_label.grid(row=9, column=0)
 
-            thing1 = tk.Text(master=window, height=1, width=15)
-            thing1.grid(row=8, column=1)
-            thing1.insert(tk.END, data[0][2])
-            thing2 = tk.Text(master=window, height=1, width=15)
-            thing2.grid(row=8, column=3)
-            thing2.insert(tk.END, data[1][2])
-            thing3 = tk.Text(master=window, height=1, width=15)
-            thing3.grid(row=8, column=5)
-            thing3.insert(tk.END, data[2][2])
-            thing4 = tk.Text(master=window, height=1, width=15)
-            thing4.grid(row=8, column=7)
-            thing4.insert(tk.END, data[3][2])
+            computed_n_value1 = tk.Text(master=window, height=1, width=15)
+            computed_n_value1.grid(row=8, column=1)
+            computed_n_value1.insert(tk.END, data[0][2])
+            computed_n_value2 = tk.Text(master=window, height=1, width=15)
+            computed_n_value2.grid(row=8, column=3)
+            computed_n_value2.insert(tk.END, data[1][2])
+            computed_n_value3 = tk.Text(master=window, height=1, width=15)
+            computed_n_value3.grid(row=8, column=5)
+            computed_n_value3.insert(tk.END, data[2][2])
+            computed_n_value4 = tk.Text(master=window, height=1, width=15)
+            computed_n_value4.grid(row=8, column=7)
+            computed_n_value4.insert(tk.END, data[3][2])
 
-            something1 = tk.Text(master=window, height=1, width=15)
-            something1.grid(row=9, column=1)
-            something1.insert(tk.END, data[0][1])
-            something2 = tk.Text(master=window, height=1, width=15)
-            something2.grid(row=9, column=3)
-            something2.insert(tk.END, data[1][1])
-            something3 = tk.Text(master=window, height=1, width=15)
-            something3.grid(row=9, column=5)
-            something3.insert(tk.END, data[2][1])
-            something4 = tk.Text(master=window, height=1, width=15)
-            something4.grid(row=9, column=7)
-            something4.insert(tk.END, data[3][1])
+            computed_m_value1 = tk.Text(master=window, height=1, width=15)
+            computed_m_value1.grid(row=9, column=1)
+            computed_m_value1.insert(tk.END, data[0][1])
+            computed_m_value2 = tk.Text(master=window, height=1, width=15)
+            computed_m_value2.grid(row=9, column=3)
+            computed_m_value2.insert(tk.END, data[1][1])
+            computed_m_value3 = tk.Text(master=window, height=1, width=15)
+            computed_m_value3.grid(row=9, column=5)
+            computed_m_value3.insert(tk.END, data[2][1])
+            computed_m_value4 = tk.Text(master=window, height=1, width=15)
+            computed_m_value4.grid(row=9, column=7)
+            computed_m_value4.insert(tk.END, data[3][1])
 
 
 def description():
 
-    a = ELEMENTS[str(getelement.get())]
+    a = ELEMENTS[str(get_element.get())]
 
     d = tk.Text(master=window, width=50, height=7)
     d.grid(row=6, column=9, padx=(60, 0), pady=(20, 20))
@@ -133,8 +140,8 @@ plus1 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
 plus1.grid(row=0, column=2)
 plus2 = tk.Label(text="+", font=("Segoe UI", 10, 'bold'))
 plus2.grid(row=0, column=6)
-equals = tk.Label(text="---->", font=("Segoe UI", 10, 'bold'))
-equals.grid(row=0, column=4)
+arrow = tk.Label(text="---->", font=("Segoe UI", 10, 'bold'))
+arrow.grid(row=0, column=4)
 
 colon1 = tk.Label(text=":", font=("Segoe UI", 10, 'bold'))
 colon1.grid(row=1, column=2)
@@ -163,6 +170,7 @@ getMR3.grid(row=1, column=5)
 getMR4 = tk.Entry()
 getMR4.grid(row=1, column=7, padx=(0, 20))
 
+# .insert adds a default value to the entry field
 getm1 = tk.Entry()
 getm1.insert(0, 0.0)
 getm1.grid(row=2, column=1)
@@ -202,16 +210,18 @@ getMm4 = tk.Entry()
 getMm4.insert(0, 0.0)
 getMm4.grid(row=4, column=7, padx=(0, 20))
 
-getelement = tk.Entry(width=60)
-getelement.grid(row=4, column=9, padx=(150, 50))
+get_element = tk.Entry(width=60)
+get_element.grid(row=4, column=9, padx=(150, 50))
 
 # ---- BUTTONS ----
 
-submit = tk.Button(text="Submit", command=done, height=1, width=7, bg="#c8c8c8").grid(row=5, column=7, pady=(0, 20))
+submit = tk.Button(text="Calculate", command=done, height=1, width=8, bg="#c8c8c8", font=("Segoe UI", 10))\
+    .grid(row=5, column=7, pady=(0, 20))
 
+# vertical line
 tkinter.ttk.Separator(window, orient='vertical').grid(column=8, row=0, rowspan=10, sticky='ns')
 
-desc = tk.Button(text="^^^ Get description of the element entered above ^^^", command=description, bg="#c8c8c8")\
-    .grid(row=5, column=9, padx=(150, 50))
+desc = tk.Button(text="^^^ Get description of the element entered above ^^^", command=description, bg="#c8c8c8",
+                 font=("Segoe UI", 10)).grid(row=5, column=9, padx=(150, 50))
 
 window.mainloop()
