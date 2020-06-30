@@ -73,11 +73,11 @@ def done():
 
             k = float(z[2]) / float(z[0])
 
-            # calculate the moles of the remaining compounds
+            # calculate the moles of the remaining compounds based on molar mass and #moles (n) adjusted for MR
             for q in data:
                 q[2] = float(k) * float(q[0])
 
-            # calculate the mass of the remaining compounds
+            # calculate the mass of the remaining compounds based on molar mass and #moles (n) adjusted for MR
             for r in data:
                 r[1] = float(r[2]) * float(r[3])
 
