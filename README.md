@@ -4,7 +4,7 @@ This is a GUI program that uses Tkinter to solve for the mass, molar mass and mo
 
 ## Sample Outputs
 
-![Sample output](https://github.com/satvick16/stoichiometry-helper-gui/blob/master/chem_sample_output.jpg?raw=true)
+![Sample output](https://github.com/satvick16/stoichiometry-helper-gui/blob/master/chem_sample_output.JPG?raw=true)
 
 ## Getting Started
 
